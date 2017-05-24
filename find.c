@@ -25,4 +25,6 @@ int main(int argc,string argv[])
 		haystack[size]=straw;
 	}
 	printf("\n");
+
+	sort(haystack,size);
 }
