@@ -22,4 +22,29 @@ bool search(int value,int values[],int n)
 				lower=mid-1;
 	}
 	return false;
+
+}
+
+void sort(int values[],int n)
+{
+	int i=0;
+	int p=0;
+	int temp=0;
+	while(i<=n)
+	{
+		int min=values[i];
+		for(int j=i;j<=n;j++)
+		{
+			if(values[j]<=min)
+			{
+				min=values[j];
+				p=j;
+			}
+		}
+		temp=values[i];
+		values[i]=min;
+		values[p]=temp;
+		i++;
+	}
+	return;
 }
