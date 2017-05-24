@@ -27,4 +27,17 @@ int main(int argc,string argv[])
 	printf("\n");
 
 	sort(haystack,size);
+
+	if(search(needle,haystack,size))
+	{
+		printf("\nFound needle in the haystack");
+		return 0;
+	}
+	else
+	{
+		printf("\nDidn't find needle in the haystack");
+		return 1;
+	}
+
+
 }
