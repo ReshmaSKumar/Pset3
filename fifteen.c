@@ -18,6 +18,51 @@ void draw(void);
 bool move(int tile);
 bool won(void);
 
+
+int main(int argc,string argv[])
+{
+	if(argc!=2)
+	{
+		printf("Usage:fifteen d\n");
+		return 1;
+	}
+
+	d=atoi(argv[1]);
+	if(d<DIM_MIN||d>DIM_MAX)
+	{
+		printf("The board must be betwwen %iX%i and %iX%i,inclusive.\n",DIM_MIN,DIM_MIN,DIM_MAX,DIM_MAX);
+		return 2;
+	}
+
+	FILE *file=fopen("log.txt","w");
+
+	if(file==NULL)
+	{
+		return 3;
+	}
+
+	greet();
+	init();
+
+	while (true)
+	{
+		clear();
+		draw();
+		for(int i=0;i<d;i++)
+		{
+			for(int j=0;j<d;j++)
+			{
+				fprintf(file,"%i",board[i][j]);
+				if(j<d-1)
+				{
+					fprintf(file,"|");
+				}
+			}
+			fprintf(file,"\n");
+		}
+		fflush(file);
+
+
 void clear(void)
 {
 	printf("\033[2J");
