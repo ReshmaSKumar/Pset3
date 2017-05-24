@@ -62,6 +62,25 @@ int main(int argc,string argv[])
 		}
 		fflush(file);
 
+		if(won())
+		{
+			printf("ftw!\n");
+			break;
+		}
+
+		printf("Tile to move:");
+		int tile=get_int();
+
+		if(tile==0)
+			break;
+		
+		fprintf(file,"%i\n",tile);
+		fflush(file);
+
+
+
+	}
+}
 
 void clear(void)
 {
@@ -106,5 +125,41 @@ void draw(void)
 		}
 		printf("\n");
 	}
+}
+
+bool won(void)
+{
+	int p=1,t=0;
+	for(int i=0;i<d;i++)
+	{
+		if(i!=(d-1))
+		{
+			for(int j=0;j<d;j++)
+			{
+				if(board[i][j]!=p)
+				{
+					t=1;
+					break;
+				}
+				p++;
+			}
+		}
+		else
+		{
+			for(int j=0;j<d-1;j++)
+			{
+				if(board[i][j]!=p)
+				{
+					t=1;
+					break;
+				}
+				p++;
+			}
+		}
+	}
+	if(t)
+		return false;
+	else
+		return true;
 }
 
