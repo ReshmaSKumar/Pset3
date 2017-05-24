@@ -50,3 +50,16 @@ void init(void)
 		board[d-1][d-2]=temp;
 	}
 }
+
+void draw(void)
+{
+	for(int i=0;i<d;i++)
+	{
+		for(int j=0;j<d;j++)
+		{
+			printf("%3d",board[i][j]);
+		}
+		printf("\n");
+	}
+}
+
