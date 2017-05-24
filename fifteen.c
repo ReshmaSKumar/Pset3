@@ -24,3 +24,10 @@ void clear(void)
 	printf("\033[%d;%dH",0,0);
 }
 
+void greet(void)
+{
+	clear();
+	printf("WELCOME TO THE GAME OF FIFTEEN\n");
+	usleep(2000000);
+}
+
