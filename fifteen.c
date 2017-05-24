@@ -77,9 +77,16 @@ int main(int argc,string argv[])
 		fprintf(file,"%i\n",tile);
 		fflush(file);
 
-
-
+		if(!move(tile))
+		{
+			printf("\nIllegal move.\n");
+			usleep(500000);
+		}
+		usleep(500000);
 	}
+	fclose(file);
+	return 0;
+	
 }
 
 void clear(void)
@@ -126,6 +133,54 @@ void draw(void)
 		printf("\n");
 	}
 }
+
+
+bool move(int tile)
+{
+	int r=0,c=0;
+	for(int i=0;i<d;i++)
+	{
+		for(int j=0;j<d;j++)
+		{
+			if(board[i][j]==0)
+			{
+				r=i;
+				c=j;
+			}
+		}
+
+	}
+	if(tile==board[r+1][c])
+	{
+		board[r][c]=tile;
+		board[r+1][c]=0;
+		return true;
+	}
+	else if(tile==board[r-1][c])
+	{
+		board[r][c]=tile;
+		board[r-1][c]=0;
+		return true;
+	}
+	else if(tile==board[r][c+1])
+	{
+		board[r][c]=tile;
+		board[r][c+1]=0;
+		return true;
+	}
+	else if(tile==board[r][c-1])
+	{
+		board[r][c]=tile;
+		board[r][c-1]=0;
+		return true;
+	}
+	else
+		return false;
+
+}
+
+
+
 
 bool won(void)
 {
